@@ -6,8 +6,9 @@
 package economia;
 
 /**
- *
- * @author giuli
+ * @author Marcello Quattromani N86001799
+ * @author Giuliano Vanesio N86001585
+ * @author Tommaso Pirozzi N8600
  */
 public class Economia {
 

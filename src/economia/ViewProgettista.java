@@ -5,6 +5,9 @@
  */
 package economia;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author giuli
@@ -25,37 +28,189 @@ public class ViewProgettista extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
-        buttonBackP = new javax.swing.JButton();
+        buttonBackProgettista = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        textObjectProgettista = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        comboPesoProgettista = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        comboPrezzoProgettista = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        comboEsteticaProgettista = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        comboComfortProgettista = new javax.swing.JComboBox<>();
+        buttonOkProgettista = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         Sfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        buttonBackP.setBackground(new java.awt.Color(248, 223, 174));
-        buttonBackP.setText("Back");
-        buttonBackP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBackPActionPerformed(evt);
+        buttonBackProgettista.setBackground(new java.awt.Color(248, 223, 174));
+        buttonBackProgettista.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        buttonBackProgettista.setText("Back");
+        buttonBackProgettista.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                buttonBackProgettistaActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonBackP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 80, 30));
+        getContentPane().add(buttonBackProgettista, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 80, 30));
+
+        jLabel6.setFont(new java.awt.Font("Dubai Medium", 3, 14)); // NOI18N
+        jLabel6.setText("IMPOSTA LE TUE PREFERENZE");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 220, -1));
+
+        jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        jLabel7.setText("Oggetto da valutare");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 130, 30));
+
+        textObjectProgettista.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        textObjectProgettista.setForeground(new java.awt.Color(153, 153, 153));
+        textObjectProgettista.setText("Nome oggetto");
+        textObjectProgettista.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
+                textObjectProgettistaFocusLost(evt);
+            }
+        });
+        textObjectProgettista.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                textObjectProgettistaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(textObjectProgettista, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 170, 30));
+
+        jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        jLabel5.setText("CPU");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 130, 30));
+
+        comboPesoProgettista.setBackground(new java.awt.Color(248, 223, 174));
+        comboPesoProgettista.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        comboPesoProgettista.setForeground(new java.awt.Color(51, 51, 51));
+        comboPesoProgettista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
+        getContentPane().add(comboPesoProgettista, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 140, 30));
+
+        jLabel1.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        jLabel1.setText("Prezzo");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 130, 30));
+
+        comboPrezzoProgettista.setBackground(new java.awt.Color(248, 223, 174));
+        comboPrezzoProgettista.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        comboPrezzoProgettista.setForeground(new java.awt.Color(51, 51, 51));
+        comboPrezzoProgettista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
+        getContentPane().add(comboPrezzoProgettista, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 140, 30));
+
+        jLabel3.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        jLabel3.setText("Estetica");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 130, 30));
+
+        comboEsteticaProgettista.setBackground(new java.awt.Color(248, 223, 174));
+        comboEsteticaProgettista.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        comboEsteticaProgettista.setForeground(new java.awt.Color(51, 51, 51));
+        comboEsteticaProgettista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
+        getContentPane().add(comboEsteticaProgettista, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 140, 30));
+
+        jLabel4.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        jLabel4.setText("Comfort");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 130, 30));
+
+        comboComfortProgettista.setBackground(new java.awt.Color(248, 223, 174));
+        comboComfortProgettista.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        comboComfortProgettista.setForeground(new java.awt.Color(51, 51, 51));
+        comboComfortProgettista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
+        getContentPane().add(comboComfortProgettista, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 140, 30));
+
+        buttonOkProgettista.setBackground(new java.awt.Color(248, 223, 174));
+        buttonOkProgettista.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        buttonOkProgettista.setText("OK");
+        buttonOkProgettista.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                buttonOkProgettistaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonOkProgettista, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 70, 40));
+
+        jLabel8.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        jLabel8.setText("Peso");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 130, 30));
+
+        jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        jLabel9.setText("GPU");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 130, 30));
+
+        jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        jLabel10.setText("RAM");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 130, 30));
 
         Sfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Immagini/fundo-textura-da-aguarela_1048-2727.jpg"))); // NOI18N
-        getContentPane().add(Sfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(Sfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonBackPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackPActionPerformed
+    private void buttonBackProgettistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackProgettistaActionPerformed
         this.setVisible(false);
         home.setVisible(true);        
-    }//GEN-LAST:event_buttonBackPActionPerformed
+    }//GEN-LAST:event_buttonBackProgettistaActionPerformed
+
+    private void textObjectProgettistaFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_textObjectProgettistaFocusLost
+    {//GEN-HEADEREND:event_textObjectProgettistaFocusLost
+        if(textObjectProgettista.getText().equals(""))
+        {
+            textObjectProgettista.setForeground(Color.LIGHT_GRAY);
+            textObjectProgettista.setText("Nome oggetto");
+        }
+    }//GEN-LAST:event_textObjectProgettistaFocusLost
+
+    private void textObjectProgettistaMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_textObjectProgettistaMouseClicked
+    {//GEN-HEADEREND:event_textObjectProgettistaMouseClicked
+        textObjectProgettista.setText(null);
+        textObjectProgettista.setForeground(Color.black);
+    }//GEN-LAST:event_textObjectProgettistaMouseClicked
+
+    private void buttonOkProgettistaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonOkProgettistaActionPerformed
+    {//GEN-HEADEREND:event_buttonOkProgettistaActionPerformed
+        if(textObjectProgettista.getText().equals("Nome oggetto") || textObjectProgettista.getText().equals("") || comboComfortProgettista.getSelectedItem().toString().equals("Scegli...") || comboEsteticaProgettista.getSelectedItem().toString().equals("Scegli...") || comboPesoProgettista.getSelectedItem().toString().equals("Scegli...") || comboPrezzoProgettista.getSelectedItem().toString().equals("Scegli..."))
+        {
+            JOptionPane.showMessageDialog(null, "E' necessario riempire tutti i campi.", "[ATTENZIONE]", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+
+        }
+    }//GEN-LAST:event_buttonOkProgettistaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Sfondo;
-    private javax.swing.JButton buttonBackP;
+    private javax.swing.JButton buttonBackProgettista;
+    private javax.swing.JButton buttonOkProgettista;
+    private javax.swing.JComboBox<String> comboComfortProgettista;
+    private javax.swing.JComboBox<String> comboEsteticaProgettista;
+    private javax.swing.JComboBox<String> comboPesoProgettista;
+    private javax.swing.JComboBox<String> comboPrezzoProgettista;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField textObjectProgettista;
     // End of variables declaration//GEN-END:variables
 }

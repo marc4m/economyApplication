@@ -6,8 +6,11 @@
 package economia;
 
 import java.awt.Color;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import Jama.*;
+
 
 /**
  *
@@ -16,8 +19,22 @@ import javax.swing.JPanel;
 public class ViewClienti extends javax.swing.JFrame {
 
     Home home;
+    HashMap<String, Double> valori;
+    double Matrix[][];
     
-    public ViewClienti(Home home) {
+    public ViewClienti(Home home) 
+    {
+        Matrix = new double[5][5];
+        valori = new HashMap<>();
+        valori.put("Decisamente più importante", 9d);
+        valori.put("Molto più importante", 7d);
+        valori.put("Più Importante", 5d);
+        valori.put("Poco più importante", 3d);
+        valori.put("Uguale", 1d);
+        valori.put("Poco meno importante", 1/3d);
+        valori.put("Meno importante", 1/5d);
+        valori.put("Molto meno importante", 1/7d);
+        valori.put("Non importante", 1/9d);
         this.home = home;
         initComponents();
     }
@@ -33,11 +50,16 @@ public class ViewClienti extends javax.swing.JFrame {
     {
 
         buttonBackC = new javax.swing.JButton();
-        comboPrezzo = new javax.swing.JComboBox<>();
-        comboPrestTecn = new javax.swing.JComboBox<>();
-        comboEstetica = new javax.swing.JComboBox<>();
-        comboComfort = new javax.swing.JComboBox<>();
-        comboPeso = new javax.swing.JComboBox<>();
+        comboPrezzo_Estetica = new javax.swing.JComboBox<>();
+        comboPrezzo_PrestPC = new javax.swing.JComboBox<>();
+        comboPrezzo_Comfort = new javax.swing.JComboBox<>();
+        comboEstetica_PrestPC = new javax.swing.JComboBox<>();
+        comboPrezzo_Peso = new javax.swing.JComboBox<>();
+        comboPrestPC_Peso = new javax.swing.JComboBox<>();
+        comboEstetica_Peso = new javax.swing.JComboBox<>();
+        comboComfort_Peso = new javax.swing.JComboBox<>();
+        comboEstetica_Comfort = new javax.swing.JComboBox<>();
+        comboPrestPC_Comfort = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -45,11 +67,27 @@ public class ViewClienti extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         buttonOkC = new javax.swing.JButton();
-        textObject = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         Sfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(625, 626));
+        setMinimumSize(new java.awt.Dimension(625, 626));
+        setPreferredSize(new java.awt.Dimension(625, 626));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -63,65 +101,95 @@ public class ViewClienti extends javax.swing.JFrame {
                 buttonBackCActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonBackC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 80, 30));
+        getContentPane().add(buttonBackC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 80, 30));
 
-        comboPrezzo.setBackground(new java.awt.Color(248, 223, 174));
-        comboPrezzo.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
-        comboPrezzo.setForeground(new java.awt.Color(51, 51, 51));
-        comboPrezzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
-        getContentPane().add(comboPrezzo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 140, 30));
+        comboPrezzo_Estetica.setBackground(new java.awt.Color(248, 223, 174));
+        comboPrezzo_Estetica.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboPrezzo_Estetica.setForeground(new java.awt.Color(51, 51, 51));
+        comboPrezzo_Estetica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboPrezzo_Estetica, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 120, 190, 30));
 
-        comboPrestTecn.setBackground(new java.awt.Color(248, 223, 174));
-        comboPrestTecn.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
-        comboPrestTecn.setForeground(new java.awt.Color(51, 51, 51));
-        comboPrestTecn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
-        getContentPane().add(comboPrestTecn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 140, 30));
+        comboPrezzo_PrestPC.setBackground(new java.awt.Color(248, 223, 174));
+        comboPrezzo_PrestPC.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboPrezzo_PrestPC.setForeground(new java.awt.Color(51, 51, 51));
+        comboPrezzo_PrestPC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboPrezzo_PrestPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 160, 190, 30));
 
-        comboEstetica.setBackground(new java.awt.Color(248, 223, 174));
-        comboEstetica.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
-        comboEstetica.setForeground(new java.awt.Color(51, 51, 51));
-        comboEstetica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
-        getContentPane().add(comboEstetica, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 140, 30));
+        comboPrezzo_Comfort.setBackground(new java.awt.Color(248, 223, 174));
+        comboPrezzo_Comfort.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboPrezzo_Comfort.setForeground(new java.awt.Color(51, 51, 51));
+        comboPrezzo_Comfort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboPrezzo_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 200, 190, 30));
 
-        comboComfort.setBackground(new java.awt.Color(248, 223, 174));
-        comboComfort.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
-        comboComfort.setForeground(new java.awt.Color(51, 51, 51));
-        comboComfort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
-        getContentPane().add(comboComfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 140, 30));
+        comboEstetica_PrestPC.setBackground(new java.awt.Color(248, 223, 174));
+        comboEstetica_PrestPC.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboEstetica_PrestPC.setForeground(new java.awt.Color(51, 51, 51));
+        comboEstetica_PrestPC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboEstetica_PrestPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 280, 190, 30));
 
-        comboPeso.setBackground(new java.awt.Color(248, 223, 174));
-        comboPeso.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
-        comboPeso.setForeground(new java.awt.Color(51, 51, 51));
-        comboPeso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Molto importante", "Importante", "Sufficiente", "Poco Importante", "Non importante" }));
-        getContentPane().add(comboPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 140, 30));
+        comboPrezzo_Peso.setBackground(new java.awt.Color(248, 223, 174));
+        comboPrezzo_Peso.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboPrezzo_Peso.setForeground(new java.awt.Color(51, 51, 51));
+        comboPrezzo_Peso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboPrezzo_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 80, 190, 30));
 
-        jLabel1.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel1.setText("Prezzo");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 130, 30));
+        comboPrestPC_Peso.setBackground(new java.awt.Color(248, 223, 174));
+        comboPrestPC_Peso.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboPrestPC_Peso.setForeground(new java.awt.Color(51, 51, 51));
+        comboPrestPC_Peso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboPrestPC_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 360, 190, 30));
 
-        jLabel2.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel2.setText("Prestazione Tecnica");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 130, 30));
+        comboEstetica_Peso.setBackground(new java.awt.Color(248, 223, 174));
+        comboEstetica_Peso.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboEstetica_Peso.setForeground(new java.awt.Color(51, 51, 51));
+        comboEstetica_Peso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboEstetica_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 240, 190, 30));
 
-        jLabel3.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel3.setText("Estetica");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 130, 30));
+        comboComfort_Peso.setBackground(new java.awt.Color(248, 223, 174));
+        comboComfort_Peso.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboComfort_Peso.setForeground(new java.awt.Color(51, 51, 51));
+        comboComfort_Peso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboComfort_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 440, 190, 30));
 
-        jLabel4.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel4.setText("Comfort");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 130, 30));
+        comboEstetica_Comfort.setBackground(new java.awt.Color(248, 223, 174));
+        comboEstetica_Comfort.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboEstetica_Comfort.setForeground(new java.awt.Color(51, 51, 51));
+        comboEstetica_Comfort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboEstetica_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 320, 190, 30));
 
-        jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel5.setText("Peso");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 130, 30));
+        comboPrestPC_Comfort.setBackground(new java.awt.Color(248, 223, 174));
+        comboPrestPC_Comfort.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        comboPrestPC_Comfort.setForeground(new java.awt.Color(51, 51, 51));
+        comboPrestPC_Comfort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
+        getContentPane().add(comboPrestPC_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 400, 190, 30));
 
-        jLabel6.setFont(new java.awt.Font("Dubai Medium", 3, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel1.setText("Il prezzo è");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 140, 30));
+
+        jLabel2.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel2.setText("Il prezzo è");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 220, 30));
+
+        jLabel3.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel3.setText("Il prezzo è");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 30));
+
+        jLabel4.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel4.setText("L'estetica è");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 200, 30));
+
+        jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel5.setText("rispetto al peso");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
+
+        jLabel6.setFont(new java.awt.Font("Forte", 2, 28)); // NOI18N
         jLabel6.setText("IMPOSTA LE TUE PREFERENZE");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 220, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 420, -1));
 
         buttonOkC.setBackground(new java.awt.Color(248, 223, 174));
         buttonOkC.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
-        buttonOkC.setText("OK!");
+        buttonOkC.setText("OK");
         buttonOkC.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -129,33 +197,70 @@ public class ViewClienti extends javax.swing.JFrame {
                 buttonOkCActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonOkC, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 70, 50));
+        getContentPane().add(buttonOkC, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 80, 40));
 
-        textObject.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
-        textObject.setForeground(new java.awt.Color(153, 153, 153));
-        textObject.setText("Nome oggetto");
-        textObject.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
-                textObjectFocusLost(evt);
-            }
-        });
-        textObject.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                textObjectMouseClicked(evt);
-            }
-        });
-        getContentPane().add(textObject, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 170, 30));
+        jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel7.setText("rispetto all' estetica");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 220, 30));
 
-        jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel7.setText("Oggetto da valutare");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 130, 30));
+        jLabel8.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel8.setText("rispetto alla prestazione del PC");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 270, 30));
+
+        jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel9.setText("rispetto al comfort");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 250, 30));
+
+        jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel10.setText("rispetto al peso");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 240, 30));
+
+        jLabel11.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel11.setText("Il prezzo è");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 140, 30));
+
+        jLabel12.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel12.setText("L'estetica è");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 150, 30));
+
+        jLabel14.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel14.setText("L'estetica è");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 160, 30));
+
+        jLabel15.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel15.setText("rispetto al comfort");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 240, 30));
+
+        jLabel16.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel16.setText("rispetto alla prestazione del PC");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 270, 30));
+
+        jLabel13.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel13.setText("La prestazione del PC è");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 190, 30));
+
+        jLabel17.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel17.setText("La prestazione del PC è");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 180, 30));
+
+        jLabel18.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel18.setText("Il comfort è");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 170, 30));
+
+        jLabel19.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel19.setText("rispetto  al peso");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 170, 30));
+
+        jLabel20.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel20.setText("rispetto al peso");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 170, 30));
+
+        jLabel21.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
+        jLabel21.setText("rispetto al comfort");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 170, 30));
 
         Sfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Immagini/fundo-textura-da-aguarela_1048-2727.jpg"))); // NOI18N
-        getContentPane().add(Sfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 370));
+        getContentPane().add(Sfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 625, 626));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,48 +272,174 @@ public class ViewClienti extends javax.swing.JFrame {
 
     private void buttonOkCActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonOkCActionPerformed
     {//GEN-HEADEREND:event_buttonOkCActionPerformed
-        if(textObject.getText().equals("Nome oggetto") || textObject.getText().equals("") || comboComfort.getSelectedItem().toString().equals("Scegli...") || comboEstetica.getSelectedItem().toString().equals("Scegli...") || comboPeso.getSelectedItem().toString().equals("Scegli...") || comboPrestTecn.getSelectedItem().toString().equals("Scegli...") || comboPrezzo.getSelectedItem().toString().equals("Scegli..."))
+        
+        if( comboComfort_Peso.getSelectedItem().toString().equals("Scegli...") || comboPrestPC_Peso.getSelectedItem().toString().equals("Scegli...") || 
+                comboPrestPC_Comfort.getSelectedItem().toString().equals("Scegli...") || comboEstetica_Comfort.getSelectedItem().toString().equals("Scegli...") || 
+                comboEstetica_Peso.getSelectedItem().toString().equals("Scegli...") || 
+                comboEstetica_PrestPC.getSelectedItem().toString().equals("Scegli...") || comboPrezzo_Comfort.getSelectedItem().toString().equals("Scegli...") || 
+                comboPrezzo_Peso.getSelectedItem().toString().equals("Scegli...") || comboPrezzo_PrestPC.getSelectedItem().toString().equals("Scegli...") || 
+                comboPrezzo_Estetica.getSelectedItem().toString().equals("Scegli...") )
         {
             JOptionPane.showMessageDialog(null, "E' necessario riempire tutti i campi.", "[ATTENZIONE]", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
+            for(int i=0; i<5;i++)
+            {
+                Matrix[i][i] = 1;
+            }
+            
+            Matrix[4][0]= valori.get(comboComfort_Peso.getSelectedItem().toString());
+            Matrix[0][4] = 1/Matrix[4][0];
+            Matrix[3][4] = valori.get(comboEstetica_Comfort.getSelectedItem().toString());
+            Matrix[4][3] = 1/Matrix[3][4];
+            Matrix[3][0] = valori.get(comboEstetica_Peso.getSelectedItem().toString());
+            Matrix[0][3] = 1/Matrix[3][0];
+            Matrix[3][2] = valori.get(comboEstetica_PrestPC.getSelectedItem().toString());
+            Matrix[2][3] = 1/Matrix[3][2];
+            Matrix[2][4] = valori.get(comboPrestPC_Comfort.getSelectedItem().toString());
+            Matrix[4][2] = 1/Matrix[2][4];
+            Matrix[2][0] = valori.get(comboPrestPC_Peso.getSelectedItem().toString());
+            Matrix[0][2] = 1/Matrix[2][0];
+            Matrix[1][4] = valori.get(comboPrezzo_Comfort.getSelectedItem().toString());
+            Matrix[4][1] = 1/Matrix[1][4];
+            Matrix[1][3] = valori.get(comboPrezzo_Estetica.getSelectedItem().toString());
+            Matrix[3][1] = 1/Matrix[1][3];
+            Matrix[1][0] = valori.get(comboPrezzo_Peso.getSelectedItem().toString());
+            Matrix[0][1] = 1/Matrix[1][0];
+            Matrix[1][2] = valori.get(comboPrezzo_PrestPC.getSelectedItem().toString());
+            Matrix[2][1] = 1/Matrix[1][2];
+            
+            Matrix m = new Matrix(Matrix);
+            m.print(5,5);
+            EigenvalueDecomposition eigen = m.eig();
+            double autovalori [] = eigen.getRealEigenvalues();
+            double maxAutovalore = autovalori[0];
+            for(int i=0; i<autovalori.length;i++)
+            {
+                if(maxAutovalore < autovalori[i])
+                    maxAutovalore=autovalori[i];
+            }
+            System.out.println("Autovalore MAX: " + maxAutovalore);
+            double consistentIndex = (maxAutovalore - 5.0)/4.0;
+            double consistentRatio = consistentIndex/1.11; //1.11 perchè la matrice è una 5x5 ved tab. 2.2 pag 54 sulle slide appunti AHP
+            System.out.println("ConsistentRatio: " + consistentRatio);
+            if(consistentRatio < 0.2)
+            {
+                JOptionPane.showConfirmDialog(this, "La matrice è consistente.", "[INFORMATION]", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "La matrice NON è consistente.", "[ERROR]", JOptionPane.ERROR_MESSAGE);
+            }
+            //AUTOVETTORE
+            double autoVettore[] = new double[5];
+            double produttoria;
+            for(int i=0; i<Matrix.length; i++)
+            {
+                produttoria = 1;
+                for(int j=0; j<Matrix.length; j++)
+                    produttoria *= Matrix[i][j];
+                
+                autoVettore[i] = Math.pow(produttoria, (1.0/5.0));
+            }
+            
+            System.out.println("Autovettore: ");
+            for (int i = 0; i < Matrix.length; i++)
+            {
+                System.out.print(autoVettore[i] +", ");
+            }
+            
+            double sumAutovector = 0;
+            for (int i = 0; i < Matrix.length; i++)
+            {
+                sumAutovector += autoVettore[i];
+            }
+            
+            double percentualiDouble[] = new double[5];
+            double percentuali[] = new double[5];
+            for (int i = 0; i < Matrix.length; i++)
+            {
+                percentualiDouble[i] = autoVettore[i] / sumAutovector;
+                percentuali[i] =  round(percentualiDouble[i], 2);
+            }
+            
+            System.out.println("PERCENTUALI:\n");
+            
+            for (int i = 0; i < Matrix.length; i++)
+            {
+                percentuali[i] *= 100;
+                System.out.println(percentuali[i] + "%, ");
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
         }
+        
+        
     }//GEN-LAST:event_buttonOkCActionPerformed
+    
+    public static double round(double value, int places) 
+    {
+        if (places < 0) 
+            throw new IllegalArgumentException();
 
-    private void textObjectMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_textObjectMouseClicked
-    {//GEN-HEADEREND:event_textObjectMouseClicked
-        textObject.setText(null);
-        textObject.setForeground(Color.black);
-    }//GEN-LAST:event_textObjectMouseClicked
-
-    private void textObjectFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_textObjectFocusLost
-    {//GEN-HEADEREND:event_textObjectFocusLost
-        if(textObject.getText().equals(""))
-        {
-            textObject.setForeground(Color.LIGHT_GRAY);
-            textObject.setText("Nome oggetto");
-        }
-    }//GEN-LAST:event_textObjectFocusLost
-
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Sfondo;
     private javax.swing.JButton buttonBackC;
     private javax.swing.JButton buttonOkC;
-    private javax.swing.JComboBox<String> comboComfort;
-    private javax.swing.JComboBox<String> comboEstetica;
-    private javax.swing.JComboBox<String> comboPeso;
-    private javax.swing.JComboBox<String> comboPrestTecn;
-    private javax.swing.JComboBox<String> comboPrezzo;
+    private javax.swing.JComboBox<String> comboComfort_Peso;
+    private javax.swing.JComboBox<String> comboEstetica_Comfort;
+    private javax.swing.JComboBox<String> comboEstetica_Peso;
+    private javax.swing.JComboBox<String> comboEstetica_PrestPC;
+    private javax.swing.JComboBox<String> comboPrestPC_Comfort;
+    private javax.swing.JComboBox<String> comboPrestPC_Peso;
+    private javax.swing.JComboBox<String> comboPrezzo_Comfort;
+    private javax.swing.JComboBox<String> comboPrezzo_Estetica;
+    private javax.swing.JComboBox<String> comboPrezzo_Peso;
+    private javax.swing.JComboBox<String> comboPrezzo_PrestPC;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField textObject;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
