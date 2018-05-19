@@ -372,23 +372,6 @@ public class ViewClienti extends javax.swing.JFrame {
                 System.out.println(percentuali[i] + "%, ");
             }
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
         }
         
         
