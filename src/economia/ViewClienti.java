@@ -37,6 +37,7 @@ public class ViewClienti extends javax.swing.JFrame {
         valori.put("Non importante", 1/9d);
         this.home = home;
         initComponents();
+        Schermata1.setVisible(false);
     }
 
     /**
@@ -49,6 +50,7 @@ public class ViewClienti extends javax.swing.JFrame {
     private void initComponents()
     {
 
+        Schermata1 = new javax.swing.JPanel();
         buttonBackC = new javax.swing.JButton();
         comboPrezzo_Estetica = new javax.swing.JComboBox<>();
         comboPrezzo_PrestPC = new javax.swing.JComboBox<>();
@@ -91,6 +93,9 @@ public class ViewClienti extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Schermata1.setOpaque(false);
+        Schermata1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         buttonBackC.setBackground(new java.awt.Color(248, 223, 174));
         buttonBackC.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
         buttonBackC.setText("Back");
@@ -101,91 +106,91 @@ public class ViewClienti extends javax.swing.JFrame {
                 buttonBackCActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonBackC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 80, 30));
+        Schermata1.add(buttonBackC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 80, 30));
 
         comboPrezzo_Estetica.setBackground(new java.awt.Color(248, 223, 174));
         comboPrezzo_Estetica.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboPrezzo_Estetica.setForeground(new java.awt.Color(51, 51, 51));
         comboPrezzo_Estetica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboPrezzo_Estetica, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 120, 190, 30));
+        Schermata1.add(comboPrezzo_Estetica, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 120, 190, 30));
 
         comboPrezzo_PrestPC.setBackground(new java.awt.Color(248, 223, 174));
         comboPrezzo_PrestPC.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboPrezzo_PrestPC.setForeground(new java.awt.Color(51, 51, 51));
         comboPrezzo_PrestPC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboPrezzo_PrestPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 160, 190, 30));
+        Schermata1.add(comboPrezzo_PrestPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 160, 190, 30));
 
         comboPrezzo_Comfort.setBackground(new java.awt.Color(248, 223, 174));
         comboPrezzo_Comfort.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboPrezzo_Comfort.setForeground(new java.awt.Color(51, 51, 51));
         comboPrezzo_Comfort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboPrezzo_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 200, 190, 30));
+        Schermata1.add(comboPrezzo_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 200, 190, 30));
 
         comboEstetica_PrestPC.setBackground(new java.awt.Color(248, 223, 174));
         comboEstetica_PrestPC.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboEstetica_PrestPC.setForeground(new java.awt.Color(51, 51, 51));
         comboEstetica_PrestPC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboEstetica_PrestPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 280, 190, 30));
+        Schermata1.add(comboEstetica_PrestPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 280, 190, 30));
 
         comboPrezzo_Peso.setBackground(new java.awt.Color(248, 223, 174));
         comboPrezzo_Peso.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboPrezzo_Peso.setForeground(new java.awt.Color(51, 51, 51));
         comboPrezzo_Peso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboPrezzo_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 80, 190, 30));
+        Schermata1.add(comboPrezzo_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 80, 190, 30));
 
         comboPrestPC_Peso.setBackground(new java.awt.Color(248, 223, 174));
         comboPrestPC_Peso.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboPrestPC_Peso.setForeground(new java.awt.Color(51, 51, 51));
         comboPrestPC_Peso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboPrestPC_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 360, 190, 30));
+        Schermata1.add(comboPrestPC_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 360, 190, 30));
 
         comboEstetica_Peso.setBackground(new java.awt.Color(248, 223, 174));
         comboEstetica_Peso.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboEstetica_Peso.setForeground(new java.awt.Color(51, 51, 51));
         comboEstetica_Peso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboEstetica_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 240, 190, 30));
+        Schermata1.add(comboEstetica_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 240, 190, 30));
 
         comboComfort_Peso.setBackground(new java.awt.Color(248, 223, 174));
         comboComfort_Peso.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboComfort_Peso.setForeground(new java.awt.Color(51, 51, 51));
         comboComfort_Peso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboComfort_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 440, 190, 30));
+        Schermata1.add(comboComfort_Peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 440, 190, 30));
 
         comboEstetica_Comfort.setBackground(new java.awt.Color(248, 223, 174));
         comboEstetica_Comfort.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboEstetica_Comfort.setForeground(new java.awt.Color(51, 51, 51));
         comboEstetica_Comfort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboEstetica_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 320, 190, 30));
+        Schermata1.add(comboEstetica_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 320, 190, 30));
 
         comboPrestPC_Comfort.setBackground(new java.awt.Color(248, 223, 174));
         comboPrestPC_Comfort.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         comboPrestPC_Comfort.setForeground(new java.awt.Color(51, 51, 51));
         comboPrestPC_Comfort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli...", "Decisamente più importante", "Molto più importante", "Più Importante", "Poco più importante", "Uguale", "Poco meno importante", "Meno importante", "Molto meno importante", "Non importante" }));
-        getContentPane().add(comboPrestPC_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 400, 190, 30));
+        Schermata1.add(comboPrestPC_Comfort, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 400, 190, 30));
 
         jLabel1.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel1.setText("Il prezzo è");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 140, 30));
+        Schermata1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 140, 30));
 
         jLabel2.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel2.setText("Il prezzo è");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 220, 30));
+        Schermata1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 220, 30));
 
         jLabel3.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel3.setText("Il prezzo è");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 30));
+        Schermata1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 30));
 
         jLabel4.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel4.setText("L'estetica è");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 200, 30));
+        Schermata1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 200, 30));
 
         jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel5.setText("rispetto al peso");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
+        Schermata1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
 
         jLabel6.setFont(new java.awt.Font("Forte", 2, 28)); // NOI18N
         jLabel6.setText("IMPOSTA LE TUE PREFERENZE");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 420, -1));
+        Schermata1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 420, -1));
 
         buttonOkC.setBackground(new java.awt.Color(248, 223, 174));
         buttonOkC.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
@@ -197,67 +202,69 @@ public class ViewClienti extends javax.swing.JFrame {
                 buttonOkCActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonOkC, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 80, 40));
+        Schermata1.add(buttonOkC, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 80, 40));
 
         jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel7.setText("rispetto all' estetica");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 220, 30));
+        Schermata1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 220, 30));
 
         jLabel8.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel8.setText("rispetto alla prestazione del PC");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 270, 30));
+        Schermata1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 270, 30));
 
         jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel9.setText("rispetto al comfort");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 250, 30));
+        Schermata1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 250, 30));
 
         jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel10.setText("rispetto al peso");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 240, 30));
+        Schermata1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 240, 30));
 
         jLabel11.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel11.setText("Il prezzo è");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 140, 30));
+        Schermata1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 140, 30));
 
         jLabel12.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel12.setText("L'estetica è");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 150, 30));
+        Schermata1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 150, 30));
 
         jLabel14.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel14.setText("L'estetica è");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 160, 30));
+        Schermata1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 160, 30));
 
         jLabel15.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel15.setText("rispetto al comfort");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 240, 30));
+        Schermata1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 240, 30));
 
         jLabel16.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel16.setText("rispetto alla prestazione del PC");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 270, 30));
+        Schermata1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 270, 30));
 
         jLabel13.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel13.setText("La prestazione del PC è");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 190, 30));
+        Schermata1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 190, 30));
 
         jLabel17.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel17.setText("La prestazione del PC è");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 180, 30));
+        Schermata1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 180, 30));
 
         jLabel18.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel18.setText("Il comfort è");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 170, 30));
+        Schermata1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 170, 30));
 
         jLabel19.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel19.setText("rispetto  al peso");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 170, 30));
+        Schermata1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 170, 30));
 
         jLabel20.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel20.setText("rispetto al peso");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 170, 30));
+        Schermata1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 170, 30));
 
         jLabel21.setFont(new java.awt.Font("Dubai Medium", 1, 16)); // NOI18N
         jLabel21.setText("rispetto al comfort");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 170, 30));
+        Schermata1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 170, 30));
+
+        getContentPane().add(Schermata1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 620));
 
         Sfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Immagini/fundo-textura-da-aguarela_1048-2727.jpg"))); // NOI18N
         getContentPane().add(Sfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 625, 626));
@@ -272,6 +279,7 @@ public class ViewClienti extends javax.swing.JFrame {
 
     private void buttonOkCActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonOkCActionPerformed
     {//GEN-HEADEREND:event_buttonOkCActionPerformed
+        
         
         if( comboComfort_Peso.getSelectedItem().toString().equals("Scegli...") || comboPrestPC_Peso.getSelectedItem().toString().equals("Scegli...") || 
                 comboPrestPC_Comfort.getSelectedItem().toString().equals("Scegli...") || comboEstetica_Comfort.getSelectedItem().toString().equals("Scegli...") || 
@@ -326,11 +334,11 @@ public class ViewClienti extends javax.swing.JFrame {
             System.out.println("ConsistentRatio: " + consistentRatio);
             if(consistentRatio < 0.2)
             {
-                JOptionPane.showConfirmDialog(this, "La matrice è consistente.", "[INFORMATION]", JOptionPane.INFORMATION_MESSAGE);
+                Schermata1.setVisible(true);
             }
             else
             {
-                JOptionPane.showMessageDialog(this, "La matrice NON è consistente.", "[ERROR]", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La matrice NON è consistente. Reinserire le preferenze.", "[ERROR]", JOptionPane.ERROR_MESSAGE);
             }
             //AUTOVETTORE
             double autoVettore[] = new double[5];
@@ -390,6 +398,7 @@ public class ViewClienti extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Schermata1;
     private javax.swing.JLabel Sfondo;
     private javax.swing.JButton buttonBackC;
     private javax.swing.JButton buttonOkC;
