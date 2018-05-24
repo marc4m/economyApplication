@@ -15,7 +15,7 @@ public class Economia {
     
     public Economia()
     {
-        Home home = new Home();
+        Home home = Home.getHome();
         home.setVisible(true);
     }
     

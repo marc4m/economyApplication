@@ -14,8 +14,20 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    static Home home;
+    
     public Home() {
         initComponents();
+        
+    }
+    
+    public static Home getHome()
+    {
+        if(home == null)
+            home= new Home();
+        
+        return home;
+           
     }
 
     /**
@@ -49,7 +61,7 @@ public class Home extends javax.swing.JFrame {
         buttonProgettista.setBackground(new java.awt.Color(248, 223, 174));
         buttonProgettista.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         buttonProgettista.setForeground(new java.awt.Color(204, 0, 0));
-        buttonProgettista.setText("Progettista");
+        buttonProgettista.setText("Venditore");
         buttonProgettista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonProgettistaActionPerformed(evt);

@@ -5,6 +5,10 @@
  */
 package economia;
 
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -17,13 +21,37 @@ import javax.swing.JTextField;
  */
 public class viewValutazione extends javax.swing.JFrame
 {
-
+    Computer primo;
+    Computer secondo;
+    Map<Integer,Icon> image;
     /**
      * Creates new form viewValutazione
      */
-    public viewValutazione()
+    public viewValutazione(Computer primo,Computer secondo)
     {
+        image = new HashMap<>();
+        this.primo = primo;
+        this.secondo = secondo;
+        image.put(1,new ImageIcon(getClass().getResource("/Immagini/xps.png")));
+        image.put(2,new ImageIcon(getClass().getResource("/Immagini/Rog.png")));
+        image.put(3,new ImageIcon(getClass().getResource("/Immagini/Zen.png")));
+        image.put(4,new ImageIcon(getClass().getResource("/Immagini/Surface.png")));
         initComponents();
+        
+        String x1 = "Nome = "+primo.getNome()+"\nPrezzo = "+primo.getPrezzo()+"\nPeso = "+primo.getPeso()+"\nRam = "+primo.getRam()+"\nCpu = "+primo.getCpu()+"\nScheda Grafica = "+primo.getGpu()+"\nAutonomia = "+primo.getAutomia();
+        
+        this.fieldPC1.setText(x1);
+        String x2 = "Nome = "+secondo.getNome()+"\nPrezzo = "+secondo.getPrezzo()+"\nPeso = "+secondo.getPeso()+"\nRam = "+secondo.getRam()+"\nCpu = "+secondo.getCpu()+"\nScheda Grafica = "+secondo.getGpu()+"\nAutonomia = "+secondo.getAutomia();
+        this.fieldPC2.setText(x2);
+     
+        this.TextValutazionePC1.setText(primo.getValut().toString().substring(0,4)+" \\100");
+        this.TextValutazionePC2.setText(secondo.getValut().toString().substring(0,4)+" \\100");
+        ImgPC1.setIcon(image.get(primo.getId()));
+        ImgPC2.setIcon(image.get(secondo.getId()));
+        this.TextValutazionePC2.setEditable(false);
+        this.TextValutazionePC1.setEditable(false);
+        this.fieldPC1.setEditable(false);
+        this.fieldPC2.setEditable(false);
     }
 
     public JButton getButtonBackHome()
@@ -38,42 +66,42 @@ public class viewValutazione extends javax.swing.JFrame
 
     public JLabel getImgPC1()
     {
-        return ImgPC1;
+        return ImgPC2;
     }
 
     public void setImgPC1(JLabel ImgPC1)
     {
-        this.ImgPC1 = ImgPC1;
+        this.ImgPC2 = ImgPC1;
     }
-
+  
     public JLabel getImgPC2()
     {
-        return ImgPC2;
+        return ImgPC1;
     }
 
     public void setImgPC2(JLabel ImgPC2)
     {
-        this.ImgPC2 = ImgPC2;
+        this.ImgPC1 = ImgPC2;
     }
 
     public JTextField getTextValutazionePC1()
     {
-        return TextValutazionePC1;
+        return TextValutazionePC2;
     }
 
     public void setTextValutazionePC1(JTextField TextValutazionePC1)
     {
-        this.TextValutazionePC1 = TextValutazionePC1;
+        this.TextValutazionePC2 = TextValutazionePC1;
     }
 
     public JTextField getTextValutazionePC2()
     {
-        return TextValutazionePC2;
+        return TextValutazionePC1;
     }
 
     public void setTextValutazionePC2(JTextField TextValutazionePC2)
     {
-        this.TextValutazionePC2 = TextValutazionePC2;
+        this.TextValutazionePC1 = TextValutazionePC2;
     }
 
     public JTextArea getFieldPC1()
@@ -123,60 +151,68 @@ public class viewValutazione extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         fieldPC1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         fieldPC2 = new javax.swing.JTextArea();
-        TextValutazionePC1 = new javax.swing.JTextField();
         TextValutazionePC2 = new javax.swing.JTextField();
-        ImgPC1 = new javax.swing.JLabel();
+        TextValutazionePC1 = new javax.swing.JTextField();
         ImgPC2 = new javax.swing.JLabel();
+        ImgPC1 = new javax.swing.JLabel();
         ButtonBackHome = new javax.swing.JButton();
         Sfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setOpaque(false);
+
         fieldPC1.setColumns(20);
+        fieldPC1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         fieldPC1.setRows(5);
+        fieldPC1.setOpaque(false);
         jScrollPane1.setViewportView(fieldPC1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 280, 220));
 
+        jScrollPane3.setOpaque(false);
+
         fieldPC2.setColumns(20);
+        fieldPC2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         fieldPC2.setRows(5);
+        fieldPC2.setOpaque(false);
         jScrollPane3.setViewportView(fieldPC2);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 280, 220));
 
-        TextValutazionePC1.setText("Valutazione");
-        TextValutazionePC1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                TextValutazionePC1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(TextValutazionePC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 270, -1));
-
         TextValutazionePC2.setText("Valutazione");
-        TextValutazionePC2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        TextValutazionePC2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextValutazionePC2ActionPerformed(evt);
             }
         });
-        getContentPane().add(TextValutazionePC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 270, -1));
-        getContentPane().add(ImgPC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 230, 180));
-        getContentPane().add(ImgPC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 230, 180));
+        getContentPane().add(TextValutazionePC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 270, -1));
+
+        TextValutazionePC1.setText("Valutazione");
+        TextValutazionePC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextValutazionePC1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextValutazionePC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 270, -1));
+        getContentPane().add(ImgPC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 230, 180));
+        getContentPane().add(ImgPC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 230, 180));
 
         ButtonBackHome.setBackground(new java.awt.Color(248, 223, 174));
         ButtonBackHome.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         ButtonBackHome.setText("Torna alla Home");
+        ButtonBackHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBackHomeActionPerformed(evt);
+            }
+        });
         getContentPane().add(ButtonBackHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, 150, 50));
 
         Sfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Immagini/fundo-textura-da-aguarela_1048-2727.jpg"))); // NOI18N
@@ -185,61 +221,26 @@ public class viewValutazione extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextValutazionePC1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_TextValutazionePC1ActionPerformed
-    {//GEN-HEADEREND:event_TextValutazionePC1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextValutazionePC1ActionPerformed
-
     private void TextValutazionePC2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_TextValutazionePC2ActionPerformed
     {//GEN-HEADEREND:event_TextValutazionePC2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextValutazionePC2ActionPerformed
 
+    private void TextValutazionePC1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_TextValutazionePC1ActionPerformed
+    {//GEN-HEADEREND:event_TextValutazionePC1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextValutazionePC1ActionPerformed
+
+    private void ButtonBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBackHomeActionPerformed
+                Home home = Home.getHome();
+                home.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_ButtonBackHomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(viewValutazione.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(viewValutazione.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(viewValutazione.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
-            java.util.logging.Logger.getLogger(viewValutazione.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                new viewValutazione().setVisible(true);
-            }
-        });
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonBackHome;
     private javax.swing.JLabel ImgPC1;

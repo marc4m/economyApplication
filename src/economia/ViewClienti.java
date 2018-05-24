@@ -11,6 +11,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Jama.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -22,6 +27,10 @@ public class ViewClienti extends javax.swing.JFrame {
     Home home;
     HashMap<String, Double> valori;
     double Matrix[][];
+    Connection conn;
+    PreparedStatement ps;
+    ResultSet rs;
+    Set<Computer> comp;
     
     public ViewClienti(Home home) 
     {
@@ -38,7 +47,8 @@ public class ViewClienti extends javax.swing.JFrame {
         valori.put("Non importante", 1/9d);
         this.home = home;
         initComponents();
-        Schermata1.setVisible(false);
+        Schermata1.setVisible(true);
+        comp = new HashSet<>();
     }
 
     /**
@@ -48,8 +58,7 @@ public class ViewClienti extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         Schermata1 = new javax.swing.JPanel();
         buttonBackC = new javax.swing.JButton();
@@ -100,10 +109,8 @@ public class ViewClienti extends javax.swing.JFrame {
         buttonBackC.setBackground(new java.awt.Color(248, 223, 174));
         buttonBackC.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
         buttonBackC.setText("Back");
-        buttonBackC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        buttonBackC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBackCActionPerformed(evt);
             }
         });
@@ -196,10 +203,8 @@ public class ViewClienti extends javax.swing.JFrame {
         buttonOkC.setBackground(new java.awt.Color(248, 223, 174));
         buttonOkC.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         buttonOkC.setText("OK");
-        buttonOkC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        buttonOkC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonOkCActionPerformed(evt);
             }
         });
@@ -350,13 +355,13 @@ public class ViewClienti extends javax.swing.JFrame {
                 for(int j=0; j<Matrix.length; j++)
                     produttoria *= Matrix[i][j];
                 
-                autoVettore[i] = Math.pow(produttoria, (1.0/5.0));
+                autoVettore[i] = Math.pow(produttoria,0.2);
             }
             
             System.out.println("Autovettore: ");
             for (int i = 0; i < Matrix.length; i++)
             {
-                System.out.print(autoVettore[i] +", ");
+                System.out.print(autoVettore[i] +" ; ");
             }
             
             double sumAutovector = 0;
@@ -365,40 +370,84 @@ public class ViewClienti extends javax.swing.JFrame {
                 sumAutovector += autoVettore[i];
             }
             
-            double percentualiDouble[] = new double[5];
+            double[] pesiDouble = new double[5];
             double percentuali[] = new double[5];
             for (int i = 0; i < Matrix.length; i++)
             {
-                percentualiDouble[i] = autoVettore[i] / sumAutovector;
-                percentuali[i] =  round(percentualiDouble[i], 2);
+                pesiDouble[i] = autoVettore[i] / sumAutovector;
+                System.out.println("Pesi : "+pesiDouble[i]);
+                percentuali[i] =  round(pesiDouble[i], 2)*100;
             }
             
             System.out.println("PERCENTUALI:\n");
             
             for (int i = 0; i < Matrix.length; i++)
             {
-                percentuali[i] *= 100;
                 System.out.println(percentuali[i] + "%, ");
             }
+        
+        try{
+                conn = Database.getConnection();
+                String query = "SELECT * FROM COMPUTER";
+                ps = conn.prepareStatement(query);
+                rs = ps.executeQuery();
+                           
+                while(rs.next())
+                {
+                    comp.add(new Computer(rs.getString(1),rs.getFloat(2),rs.getFloat(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11)));
+                }
+                ps.clearParameters();
+                
+                for(Computer x : comp)
+                {   
+                    String query2 = "SELECT * FROM COMPUTER_FUZZY WHERE ID = ?";
+                    ps = conn.prepareStatement(query2);
+                    ps.setInt(1,x.getId());
+                    rs = ps.executeQuery();
+                    double valutazione;
+                    if(rs.next())
+                    {
+                      valutazione = rs.getFloat(2)*pesiDouble[0] + rs.getFloat(3)*pesiDouble[1] + rs.getFloat(4)*pesiDouble[2] + rs.getFloat(12) * pesiDouble[3] + rs.getFloat(8)*pesiDouble[4];
+                      x.setValut(valutazione);
+                    }
+                    
+                }
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Errore ricerca");
         }
         
         
-        Connection conn = Database.getConnection();
-        String query = "";
+        Computer primo = null;
+        Computer secondo = null;
+        double max1 = 0;
+        double max2 = 0;
         
-        viewValutazione viewVal = new viewValutazione();
+        for(Computer x : comp)
+        {
+            if(x.getValut()> max1)
+            {
+                max1 = x.getValut();
+                primo = x;
+            }
+            
+        }
         
+        for(Computer x : comp)
+        {
+            if(x.getValut() > max2 && x!=primo)
+            {
+                 max2 = x.getValut();
+                 secondo = x;
+            }
+        }
         
-        
-        
-        
+        viewValutazione viewVal = new viewValutazione(primo,secondo);
         //Setto tutti gli elementi che si trovano in viewVal con le caratteristiche dei computer che rispecchiano le preferenze del cliente
-        
-        
-        
-        
-        
         viewVal.setVisible(true);
+        this.dispose();
+        }
         
     }//GEN-LAST:event_buttonOkCActionPerformed
     
