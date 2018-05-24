@@ -10,6 +10,7 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Jama.*;
+import java.sql.Connection;
 
 
 /**
@@ -379,9 +380,25 @@ public class ViewClienti extends javax.swing.JFrame {
                 percentuali[i] *= 100;
                 System.out.println(percentuali[i] + "%, ");
             }
-            
         }
         
+        
+        Connection conn = Database.getConnection();
+        String query = "";
+        
+        viewValutazione viewVal = new viewValutazione();
+        
+        
+        
+        
+        
+        //Setto tutti gli elementi che si trovano in viewVal con le caratteristiche dei computer che rispecchiano le preferenze del cliente
+        
+        
+        
+        
+        
+        viewVal.setVisible(true);
         
     }//GEN-LAST:event_buttonOkCActionPerformed
     
