@@ -48,8 +48,7 @@ public class ViewClienti extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         Schermata1 = new javax.swing.JPanel();
         buttonBackC = new javax.swing.JButton();
@@ -100,10 +99,8 @@ public class ViewClienti extends javax.swing.JFrame {
         buttonBackC.setBackground(new java.awt.Color(248, 223, 174));
         buttonBackC.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
         buttonBackC.setText("Back");
-        buttonBackC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        buttonBackC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBackCActionPerformed(evt);
             }
         });
@@ -196,10 +193,8 @@ public class ViewClienti extends javax.swing.JFrame {
         buttonOkC.setBackground(new java.awt.Color(248, 223, 174));
         buttonOkC.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         buttonOkC.setText("OK");
-        buttonOkC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        buttonOkC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonOkCActionPerformed(evt);
             }
         });
