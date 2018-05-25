@@ -28,6 +28,7 @@ public class ViewVenditore extends javax.swing.JFrame {
     
     public ViewVenditore() {
         initComponents();
+        
     }
 
     /**
@@ -50,13 +51,18 @@ public class ViewVenditore extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         comboSegmenti.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        comboSegmenti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        comboSegmenti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scegli Segmento", "1", "2", "3", "4", "5" }));
         comboSegmenti.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboSegmentiItemStateChanged(evt);
             }
         });
-        getContentPane().add(comboSegmenti, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 40, 30));
+        comboSegmenti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSegmentiActionPerformed(evt);
+            }
+        });
+        getContentPane().add(comboSegmenti, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 140, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("SEGMENTO DI MERCATO");
@@ -91,8 +97,8 @@ public class ViewVenditore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboSegmentiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSegmentiItemStateChanged
-        
-        try {
+      if(!comboSegmenti.getSelectedItem().toString().equals("Scegli Segmento"))
+      {  try {
             con = Database.getConnection();
             String sql = "SELECT * FROM VAL_SEGMENTI WHERE SEGMENTO=? ORDER BY VALUTAZIONE DESC";
             ps = con.prepareStatement(sql);
@@ -120,11 +126,14 @@ public class ViewVenditore extends javax.swing.JFrame {
             
             tableSegmenti.setModel(datamodel());
             
+            con.close();
+            ps.close();
+            
             
         } catch (SQLException ex) {
             Logger.getLogger(ViewVenditore.class.getName()).log(Level.SEVERE, null, ex);
         }         
-            
+      }     
     }//GEN-LAST:event_comboSegmentiItemStateChanged
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
@@ -132,6 +141,10 @@ public class ViewVenditore extends javax.swing.JFrame {
         x.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonHomeActionPerformed
+
+    private void comboSegmentiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSegmentiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSegmentiActionPerformed
 
     public DefaultTableModel datamodel() throws SQLException
     {
@@ -149,8 +162,11 @@ public class ViewVenditore extends javax.swing.JFrame {
         };
         while(rs.next())
         {
-            data.addRow(new Object[]{rs.getString(1),rs.getFloat(2),rs.getFloat(3),rs.getFloat(4),rs.getFloat(5),rs.getFloat(6),rs.getFloat(7),rs.getFloat(8),rs.getFloat(9),rs.getFloat(10),rs.getFloat(11),rs.getFloat(12),rs.getFloat(13)});
+            String x = new String(rs.getString(2));
+            
+            data.addRow(new Object[]{rs.getString(2),rs.getFloat(3),rs.getFloat(4),rs.getFloat(5),rs.getFloat(6),rs.getFloat(7),rs.getFloat(8),rs.getFloat(9),rs.getFloat(10),rs.getFloat(11),rs.getFloat(12),rs.getFloat(13),rs.getFloat(14)});
         }
+        
         return data;
     }
 
