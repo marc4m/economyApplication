@@ -82,9 +82,12 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonClienteActionPerformed
 
     private void buttonProgettistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProgettistaActionPerformed
-        ViewProgettista p = new ViewProgettista(this);
+        /*ViewProgettista p = new ViewProgettista(this);
         p.setVisible(true);
+        this.setVisible(false);*/
+        ViewVenditore v = new ViewVenditore();
         this.setVisible(false);
+        v.setVisible(true);
     }//GEN-LAST:event_buttonProgettistaActionPerformed
 
 
