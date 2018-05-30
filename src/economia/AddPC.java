@@ -21,12 +21,23 @@ public class AddPC extends javax.swing.JFrame {
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
+    float pesoram;
+    float pesogpu;
+    float pesocpu;
+    float pesoauto;
+    float pesorum;
+    float pesoschermo;
     /**
      * Creates new form AddPC
      */
     public AddPC() {
         initComponents();
-                
+        pesoram = 0.33f;   
+        pesocpu= 0.54f;
+        pesogpu = 0.13f;
+        pesorum = 0.12f;
+        pesoschermo = 0.42f;
+        pesoauto = 0.46f;
     }
 
     /**
@@ -287,19 +298,21 @@ public class AddPC extends javax.swing.JFrame {
         Float rumore= Float.parseFloat(spinnerPrezzo.getValue().toString());
         Float estetica = Float.parseFloat(spinnerPeso.getValue().toString());
         
-        String sql2 = "INSERT INTO COMPUTER_FUZZY VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql2 = "INSERT INTO COMPUTER_FUZZY VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         ps = con.prepareStatement(sql2);
         ps.setInt(1,id);
         ps.setFloat(2,peso);
         ps.setFloat(3,prezzo);
-        ps.setFloat(4,ram);
-        ps.setFloat(5,cpu);
-        ps.setFloat(6,gpu);
-        ps.setFloat(7,schermo);
-        ps.setFloat(8,autonomia);
-        ps.setFloat(9,rumore);
-        ps.setFloat(10,estetica);
-        ps.setInt(11,id);
+        ps.setFloat(4,(ram*pesoram) + (cpu*pesocpu )+ (gpu*pesogpu));
+        ps.setFloat(5,ram);
+        ps.setFloat(6,cpu);
+        ps.setFloat(7,gpu);
+        ps.setFloat(8,(schermo*pesoschermo)+(autonomia*pesoauto)+(rumore*pesorum));
+        ps.setFloat(9,schermo);
+        ps.setFloat(10,autonomia);
+        ps.setFloat(11,rumore);
+        ps.setFloat(12,estetica);
+        ps.setInt(13,id);
         System.out.println("SONO QUA 4");
         ps.executeUpdate();
         ps.close();
