@@ -36,6 +36,8 @@ public class viewValutazione extends javax.swing.JFrame
         image.put(2,new ImageIcon(getClass().getResource("/Immagini/Rog.png")));
         image.put(3,new ImageIcon(getClass().getResource("/Immagini/Zen.png")));
         image.put(4,new ImageIcon(getClass().getResource("/Immagini/Surface.png")));
+        image.put(5,new ImageIcon(getClass().getResource("/Immagini/nophoto.png")));
+
         initComponents();
         
         String x1 = "Nome = "+primo.getNome()+"\nPrezzo = "+primo.getPrezzo()+"\nPeso = "+primo.getPeso()+"\nRam = "+primo.getRam()+"\nCpu = "+primo.getCpu()+"\nScheda Grafica = "+primo.getGpu()+"\nAutonomia = "+primo.getAutomia();
@@ -46,8 +48,15 @@ public class viewValutazione extends javax.swing.JFrame
      
         this.TextValutazionePC1.setText(primo.getValut().toString().substring(0,4)+" \\100");
         this.TextValutazionePC2.setText(secondo.getValut().toString().substring(0,4)+" \\100");
-        ImgPC1.setIcon(image.get(primo.getId()));
-        ImgPC2.setIcon(image.get(secondo.getId()));
+        if(primo.getId()<=4)
+          ImgPC1.setIcon(image.get(primo.getId()));
+        else
+          ImgPC1.setIcon(image.get(5));
+        if(secondo.getId()<=4)
+          ImgPC2.setIcon(image.get(secondo.getId()));
+        else
+          ImgPC2.setIcon(image.get(5));
+
         this.TextValutazionePC2.setEditable(false);
         this.TextValutazionePC1.setEditable(false);
         this.fieldPC1.setEditable(false);
