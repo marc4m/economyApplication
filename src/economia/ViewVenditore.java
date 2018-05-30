@@ -157,8 +157,8 @@ public class ViewVenditore extends javax.swing.JFrame {
     }//GEN-LAST:event_comboSegmentiActionPerformed
 
     private void buttonAddPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddPCActionPerformed
-        this.dispose();
-        AddPC pc = new AddPC();
+        this.setVisible(false);
+        AddPC pc = new AddPC(this);
         pc.setVisible(true);
     }//GEN-LAST:event_buttonAddPCActionPerformed
 

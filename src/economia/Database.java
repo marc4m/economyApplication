@@ -14,14 +14,8 @@ import java.sql.SQLException;
 public class Database {
 
     private static Connection con;
-    //progettoingprivate static  String user = "Marcello";
-    //private static String password = "progettoing";
-    //private static  String user = "cognomen1";
-    //private static String password = "pippo";
     private static  String user = "root";
     private static String password = "progettoing";
-    //private static  String user = "Vincenzo";
-    //private static String password = "bd12";
     private static String url = "jdbc:mysql://localhost/economia?useSSL=false&serverTimezone=Europe/Rome";
 
    

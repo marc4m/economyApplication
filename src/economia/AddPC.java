@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,10 +28,11 @@ public class AddPC extends javax.swing.JFrame {
     float pesoauto;
     float pesorum;
     float pesoschermo;
+    JFrame frameback;
     /**
      * Creates new form AddPC
      */
-    public AddPC() {
+    public AddPC(JFrame x) {
         initComponents();
         pesoram = 0.33f;   
         pesocpu= 0.54f;
@@ -38,6 +40,7 @@ public class AddPC extends javax.swing.JFrame {
         pesorum = 0.12f;
         pesoschermo = 0.42f;
         pesoauto = 0.46f;
+        frameback = x;
     }
 
     /**
@@ -66,12 +69,11 @@ public class AddPC extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         textSchermo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        textPrezzo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         scalaFuzzy = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        spinnerPeso = new javax.swing.JSpinner();
+        spinnerPrezzo2 = new javax.swing.JSpinner();
         jLabel13 = new javax.swing.JLabel();
         spinnerPrezzo = new javax.swing.JSpinner();
         spinnerEstetica = new javax.swing.JSpinner();
@@ -90,10 +92,13 @@ public class AddPC extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        buttonCreatePC = new javax.swing.JButton();
+        buttonBack = new javax.swing.JButton();
+        buttonCreatePC1 = new javax.swing.JButton();
+        spinnerPeso = new javax.swing.JSpinner();
         sfond = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -159,7 +164,6 @@ public class AddPC extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("SCHERMO");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 110, 30));
-        getContentPane().add(textPrezzo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 110, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -183,8 +187,8 @@ public class AddPC extends javax.swing.JFrame {
         jLabel12.setText("Peso");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 70, 20));
 
-        spinnerPeso.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
-        getContentPane().add(spinnerPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 70, 20));
+        spinnerPrezzo2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        getContentPane().add(spinnerPrezzo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 70, 30));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -260,14 +264,29 @@ public class AddPC extends javax.swing.JFrame {
         jLabel22.setText("Comfort");
         getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 70, 30));
 
-        buttonCreatePC.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonCreatePC.setText("AGGIUNGI!");
-        buttonCreatePC.addActionListener(new java.awt.event.ActionListener() {
+        buttonBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonBack.setText("AGGIUNGI");
+        buttonBack.setMaximumSize(new java.awt.Dimension(93, 23));
+        buttonBack.setMinimumSize(new java.awt.Dimension(93, 23));
+        buttonBack.setPreferredSize(new java.awt.Dimension(93, 23));
+        buttonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCreatePCActionPerformed(evt);
+                buttonBackActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonCreatePC, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, -1, 40));
+        getContentPane().add(buttonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 100, 40));
+
+        buttonCreatePC1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonCreatePC1.setText("INDIETRO");
+        buttonCreatePC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreatePC1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonCreatePC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 100, 40));
+
+        spinnerPeso.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+        getContentPane().add(spinnerPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 70, 20));
 
         sfond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Immagini/sfondo.jpg"))); // NOI18N
         getContentPane().add(sfond, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 360));
@@ -275,17 +294,20 @@ public class AddPC extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCreatePCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreatePCActionPerformed
+    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
            
         String sql = "SELECT MAX(ID)+1 FROM COMPUTER_FUZZY";
         int id  = 0;
-        con = Database.getConnection();
-        try {
+        
+      try {
+            con = Database.getConnection();
+            con.setAutoCommit(false);
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
+       
             if(rs.next())
                id=rs.getInt(1);
-          ps.close();
+            ps.close();
         
         Float peso = Float.parseFloat(spinnerPeso.getValue().toString());
         Float prezzo = Float.parseFloat(spinnerPrezzo.getValue().toString());
@@ -293,10 +315,10 @@ public class AddPC extends javax.swing.JFrame {
         Float cpu = Float.parseFloat(spinnerCPU.getValue().toString());
         Float gpu = Float.parseFloat(spinnerGPU.getValue().toString());
         Float schermo = Float.parseFloat(spinnerSchermo.getValue().toString());
-        Float autonomia = Float.parseFloat(spinnerPeso.getValue().toString());
-        Float rumore= Float.parseFloat(spinnerPrezzo.getValue().toString());
-        Float estetica = Float.parseFloat(spinnerPeso.getValue().toString());
-        if(peso != 0 && prezzo != 0 && ram!=0 && cpu != 0 && gpu != 0 && schermo != 0 && autonomia != 0 && rumore != 0 && estetica != 0 && textNome.getText().trim().length()!= 0 && textSchermo.getText().trim().length() != 0 && textPrezzo.getText().trim().length()!=0)
+        Float autonomia = Float.parseFloat(spinnerAutonomia.getValue().toString());
+        Float rumore= Float.parseFloat(spinnerRumore.getValue().toString());
+        Float estetica = Float.parseFloat(spinnerEstetica.getValue().toString());
+        if(peso != 0 && prezzo != 0 && ram!=0 && cpu != 0 && gpu != 0 && schermo != 0 && autonomia != 0 && rumore != 0 && estetica != 0 && textNome.getText().trim().length()!= 0 && textSchermo.getText().trim().length() != 0)
         {
             String sql2 = "INSERT INTO COMPUTER_FUZZY VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);";
         
@@ -316,11 +338,11 @@ public class AddPC extends javax.swing.JFrame {
             ps.setInt(13,id);
             ps.executeUpdate();
             ps.close();
-        
+            
       
             String nome = textNome.getText();
             Float peso2 = Float.parseFloat(comboPeso.getSelectedItem().toString());
-            Float prezzo2 = Float.parseFloat(textPrezzo.getText());
+            Float prezzo2 = Float.parseFloat(spinnerPrezzo2.getValue().toString());
             String ram2 = comboRAM.getSelectedItem().toString();
             String cpu2 = comboProcessore.getSelectedItem().toString();
             String gpu2 = comboGPU.getSelectedItem().toString();
@@ -328,8 +350,8 @@ public class AddPC extends javax.swing.JFrame {
             String autonomia2= comboAutonomia.getSelectedItem().toString();
             String rumore2 = comboRumore.getSelectedItem().toString();
 
-
-            String sql3 = "Insert into computer values(?,?,?,?,?,?,?,?,?,?,?,?);";
+            
+            String sql3 = "Insert into computer values(?,?,?,?,?,?,?,?,?,?,?);";
             ps = con.prepareStatement(sql3);
             ps.setString(1,nome);
             ps.setFloat(2,peso2);
@@ -343,21 +365,31 @@ public class AddPC extends javax.swing.JFrame {
             ps.setInt(10,id); //da fare dentro fuzzy l'id
             ps.setInt(11,id);
             ps.executeUpdate();
-
+            
+            con.commit();
             con.close();
             ps.close();
+            JOptionPane.showMessageDialog(this,"Inserimento effetuato con successo","[ERRORE]",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+            frameback.setVisible(true);
+                    
         }
         else
         {
-            JOptionPane.showMessageDialog(this,"Errore : campi vuoti o settati a 0. Riprova inserendo valori valid","[ERRORE]",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Errore : campi vuoti o settati a 0. Riprova inserendo valori validi","[ERRORE]",JOptionPane.ERROR_MESSAGE);
         }
         }
         catch(SQLException ex)
         {
             String msg = ex.getMessage();
-           JOptionPane.showMessageDialog(this,"Errore: "+msg,"[ERRORE]",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Errore: "+msg,"[ERRORE]",JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_buttonCreatePCActionPerformed
+    }//GEN-LAST:event_buttonBackActionPerformed
+
+    private void buttonCreatePC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreatePC1ActionPerformed
+        this.setVisible(false);
+        frameback.setVisible(true);
+    }//GEN-LAST:event_buttonCreatePC1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,7 +397,8 @@ public class AddPC extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCreatePC;
+    private javax.swing.JButton buttonBack;
+    private javax.swing.JButton buttonCreatePC1;
     private javax.swing.JComboBox<String> comboAutonomia;
     private javax.swing.JComboBox<String> comboGPU;
     private javax.swing.JComboBox<String> comboPeso;
@@ -402,11 +435,11 @@ public class AddPC extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerGPU;
     private javax.swing.JSpinner spinnerPeso;
     private javax.swing.JSpinner spinnerPrezzo;
+    private javax.swing.JSpinner spinnerPrezzo2;
     private javax.swing.JSpinner spinnerRAM;
     private javax.swing.JSpinner spinnerRumore;
     private javax.swing.JSpinner spinnerSchermo;
     private javax.swing.JTextField textNome;
-    private javax.swing.JTextField textPrezzo;
     private javax.swing.JTextField textSchermo;
     // End of variables declaration//GEN-END:variables
 }
