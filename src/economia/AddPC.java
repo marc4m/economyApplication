@@ -5,12 +5,22 @@
  */
 package economia;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author giuli
  */
 public class AddPC extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     /**
      * Creates new form AddPC
      */
@@ -241,6 +251,11 @@ public class AddPC extends javax.swing.JFrame {
 
         buttonCreatePC.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         buttonCreatePC.setText("AGGIUNGI!");
+        buttonCreatePC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreatePCActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonCreatePC, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, -1, 40));
 
         sfond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Immagini/sfondo.jpg"))); // NOI18N
@@ -248,6 +263,91 @@ public class AddPC extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonCreatePCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreatePCActionPerformed
+           
+        String sql = "SELECT MAX(ID)+1 FROM COMPUTER_FUZZY";
+        int id  = 0;
+        con = Database.getConnection();
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next())
+               id=rs.getInt(1);
+          ps.close();
+          System.out.println("SONO QUA1");
+
+        Float peso = Float.parseFloat(spinnerPeso.getValue().toString());
+        Float prezzo = Float.parseFloat(spinnerPrezzo.getValue().toString());
+        Float ram= Float.parseFloat(spinnerRAM.getValue().toString());
+        Float cpu = Float.parseFloat(spinnerCPU.getValue().toString());
+        Float gpu = Float.parseFloat(spinnerGPU.getValue().toString());
+        Float schermo = Float.parseFloat(spinnerSchermo.getValue().toString());
+        Float autonomia = Float.parseFloat(spinnerPeso.getValue().toString());
+        Float rumore= Float.parseFloat(spinnerPrezzo.getValue().toString());
+        Float estetica = Float.parseFloat(spinnerPeso.getValue().toString());
+        
+        String sql2 = "INSERT INTO COMPUTER_FUZZY VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        ps = con.prepareStatement(sql2);
+        ps.setInt(1,id);
+        ps.setFloat(2,peso);
+        ps.setFloat(3,prezzo);
+        ps.setFloat(4,ram);
+        ps.setFloat(5,cpu);
+        ps.setFloat(6,gpu);
+        ps.setFloat(7,schermo);
+        ps.setFloat(8,autonomia);
+        ps.setFloat(9,rumore);
+        ps.setFloat(10,estetica);
+        ps.setInt(11,id);
+        System.out.println("SONO QUA 4");
+        ps.executeUpdate();
+        ps.close();
+       
+        System.out.println("SONO QUA2");
+
+        if(textNome.getText().trim().length()!= 0 && textSchermo.getText().trim().length() != 0 && textPrezzo.getText().trim().length()!=0)
+        {
+            String nome = textNome.getText();
+            Float peso2 = Float.parseFloat(comboPeso.getSelectedItem().toString());
+            Float prezzo2 = Float.parseFloat(textPrezzo.getText());
+            String ram2 = comboRAM.getSelectedItem().toString();
+            String cpu2 = comboProcessore.getSelectedItem().toString();
+            String gpu2 = comboGPU.getSelectedItem().toString();
+            String schermo2 = textSchermo.getText();
+            String autonomia2= comboAutonomia.getSelectedItem().toString();
+            String rumore2 = comboRumore.getSelectedItem().toString();
+
+
+            String sql3 = "Insert into computer values(?,?,?,?,?,?,?,?,?,?,?,?);";
+            ps = con.prepareStatement(sql3);
+            ps.setString(1,nome);
+            ps.setFloat(2,peso2);
+            ps.setFloat(3,prezzo2);
+            ps.setString(4,ram2);
+            ps.setString(5,cpu2);
+            ps.setString(6,gpu2);
+            ps.setString(7,schermo2);
+            ps.setString(8,autonomia2);
+            ps.setString(9,rumore2);
+            ps.setInt(10,id); //da fare dentro fuzzy l'id
+            ps.setInt(11,id);
+            ps.executeUpdate();
+                      System.out.println("SONO QUA3");
+
+            con.close();
+            ps.close();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this,"Errore : campi vuoti","[ERRORE]",JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        catch(SQLException ex)
+        {
+           JOptionPane.showMessageDialog(this,"Errore :mancata connessione col il database","[ERRORE]",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonCreatePCActionPerformed
 
     /**
      * @param args the command line arguments
