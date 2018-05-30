@@ -45,6 +45,7 @@ public class ViewVenditore extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableSegmenti = new javax.swing.JTable();
         buttonHome = new javax.swing.JButton();
+        buttonAddPC = new javax.swing.JButton();
         sfondoVenditore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,6 +90,15 @@ public class ViewVenditore extends javax.swing.JFrame {
             }
         });
         getContentPane().add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 40));
+
+        buttonAddPC.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        buttonAddPC.setText("AGGIUNGI PC");
+        buttonAddPC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddPCActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonAddPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 110, 40));
 
         sfondoVenditore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Immagini/sfondo.jpg"))); // NOI18N
         getContentPane().add(sfondoVenditore, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 420));
@@ -146,6 +156,12 @@ public class ViewVenditore extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboSegmentiActionPerformed
 
+    private void buttonAddPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddPCActionPerformed
+        this.dispose();
+        AddPC pc = new AddPC();
+        pc.setVisible(true);
+    }//GEN-LAST:event_buttonAddPCActionPerformed
+
     public DefaultTableModel datamodel() throws SQLException
     {
         DefaultTableModel data = new DefaultTableModel(new Object [][] {
@@ -171,6 +187,7 @@ public class ViewVenditore extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAddPC;
     private javax.swing.JButton buttonHome;
     private javax.swing.JComboBox<String> comboSegmenti;
     private javax.swing.JLabel jLabel1;
